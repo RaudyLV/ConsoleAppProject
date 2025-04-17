@@ -42,6 +42,21 @@ public class Tarea {
             Console.ReadKey();
     }
 
+    public void EliminarTarea(){
+        Console.Write("Ingrese el id de la tarea a eliminar: ");
+        int id;
+         while(!int.TryParse(Console.ReadLine(), out id) ){
+            Console.WriteLine("Ingrese un numero valido: ");
+        }
+
+        if(!Tareas.Any(t => t.Id == id)){
+            Console.WriteLine("Tarea no encontrada!");
+        }else{
+
+            Tareas.RemoveAt(id - 1); //no es la mejor practica.
+        }
+    }
+
     public void VerTareas() {
         Console.Clear();
         foreach(var tarea in Tareas){
