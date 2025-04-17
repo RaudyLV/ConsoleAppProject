@@ -1,18 +1,16 @@
 ﻿global using System;
 global using System.Collections.Generic;
 public class ProgramaPrueba {
-   static List<Tarea> tareas= new List<Tarea>();
-    static int contador = 0;
      static void Main(String[] args) {
-        
-
+        Tarea tarea= new Tarea();
         int opcion;
 
         do {
             Console.Clear();
             Console.WriteLine("1. Agregar tarea");
-            Console.WriteLine("2.Ver tareas");
-            Console.WriteLine("3. Salir del programa");
+            Console.WriteLine("2. Actualizar tarea");
+            Console.WriteLine("3.Ver tareas");
+            Console.WriteLine("4. Salir del programa");
             Console.Write("Elija una opcion: ");
 
             while (!int.TryParse(Console.ReadLine(), out opcion)) {
@@ -21,40 +19,25 @@ public class ProgramaPrueba {
 
 
             switch(opcion){
-                case 1: AgregarTarea();
+                case 1: tarea.AgregarTarea();
                 break;
 
-                case 2: VerTareas();
+                case 2: tarea.ActualizarTarea();
                 break;
 
-                case 3: Console.WriteLine("Saliste del programa...");
+                case 3: tarea.VerTareas();
+                break;
+
+                case 4: Console.WriteLine("Saliste del programa...");
                 break;
 
                 default: Console.WriteLine("Ingrese una opcion valida...");
                 break;
             }
            
-        }while(opcion != 3);
+        }while(opcion != 4);
 
     }
 
-    public static void AgregarTarea() {
-        Console.Clear();
-        Console.WriteLine("Digite la descripcion de la tarea: ");
-        string descripcion = Console.ReadLine() ?? string.Empty;
-
-        tareas.Add(new Tarea{Id = ++contador, Description = descripcion, IsCompleted = false });
-
-         Console.Write("Pulse enter para continuar");
-            Console.ReadKey();
-    }
-
-    public static void VerTareas() {
-        Console.Clear();
-        foreach(var tarea in tareas){
-            Console.WriteLine( tarea.ToString());
-        }
-         Console.Write("Pulse enter para continuar");
-            Console.ReadKey();
-    }
+  
 }
